@@ -7,9 +7,13 @@ fn alpha(){
 }
 
 fn beta(){
-
+    let x: &'static str = "One";
+    let y: &'static str = "Two";
+    let z: &'static str = "Three";
+    print!("{} something's got to give \n{} something's got to give \n{} something's got to give\n",x,y,z)
 }
 
 fn main() {
     alpha();
+    beta();
 }
