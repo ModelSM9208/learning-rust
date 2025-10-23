@@ -1,4 +1,4 @@
-fn beta(){
+fn alpha(){
     let _x: &'static str = "two";
     let y: i32 = 2;
     let z: i32 = 2;
@@ -6,6 +6,10 @@ fn beta(){
     println!("y:{} equals z:{}",y,z)
 }
 
+fn beta(){
+
+}
+
 fn main() {
-    beta();
+    alpha();
 }
