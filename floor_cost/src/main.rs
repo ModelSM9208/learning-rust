@@ -1,27 +1,21 @@
-use std::io;
+use std::io::{self, Write};
+
+fn get_positive_number(prompt: &str) -> f64 {
+    loop {
+        print!("{}", prompt);
+        io::stdout().flush().expect("Failed to flush");
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        match input.trim().parse::<f64>() {
+            Ok(val) if val > 0.0 => return val,
+            _ => println!("Invalid input. Please enter a positive number."),
+        }
+    }
+}
 
 fn main() {
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read line");
-
-    println!("Enter width: ");
-    let mut width_input = String::new();
-    io::stdin().read_line(&mut width_input).expect("Failed to read line");
-
-    println!("Enter length: ");
-    let mut length_input = String::new();
-    io::stdin().read_line(&mut length_input).expect("Failed to read line");
-
-    println!("Enter cost per unit: ");
-    let mut cost_per_unit_input = String::new();
-    io::stdin().read_line(&mut cost_per_unit_input).expect("Failed to read line");
-
-    let width: f64 = width_input.trim().parse().expect("Please enter a number");
-    println!("{}", width);
-    let length: f64 = length_input.trim().parse().expect("Please enter a number");
-    println!("{}", length);
-    let cost_per_unit: f64 = cost_per_unit_input.trim().parse().expect("cash money only");
-    println!("{}", cost_per_unit);
-    let total_cost = width * length * cost_per_unit;
-    println!("{}", total_cost)
+    let width = get_positive_number("Enter width (in feet): ");
+    let length = get_positive_number("Enter length (in feet): ");
+    let cost = get_positive_number("Enter cost per unit: ");
+    println!("Total cost: ${:.2}", width * length * cost);
 }
