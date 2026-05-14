@@ -8,7 +8,8 @@ fn get_positive_number(prompt: &str) -> f64 {
         io::stdin().read_line(&mut input).expect("Failed to read line");
         match input.trim().parse::<f64>() {
             Ok(val) if val > 0.0 => return val,
-            _ => println!("Invalid input. Please enter a positive number."),
+            Ok(_) => println!("Value must be greater than zero."),
+            Err(_) => println!("That's not a number. Try again."),
         }
     }
 }
