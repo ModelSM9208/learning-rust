@@ -1,6 +1,6 @@
 # === Rust / Cargo ===
 # Compiled binary output
-/target/
+**/target/
 
 # Cargo package files
 **/*.rs.bk
