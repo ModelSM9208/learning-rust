@@ -5,7 +5,9 @@ fn get_positive_number(prompt: &str) -> f64 {
         print!("{}", prompt);
         io::stdout().flush().expect("Failed to flush");
         let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Failed to read line");
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Failed to read line");
         match input.trim().parse::<f64>() {
             Ok(val) if val > 0.0 => return val,
             Ok(_) => println!("Value must be greater than zero."),
